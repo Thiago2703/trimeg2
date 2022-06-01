@@ -1,0 +1,10 @@
+.idea/
+*.iml
+node_modules/
+
+\#private-*/
+
+_examples-node/test-urls-private.js
+_examples-node/temp/
+__experiments/app/temp/
+
