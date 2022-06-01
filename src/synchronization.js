@@ -1,5 +1,5 @@
-import {performance} from "./browser-context.js";
-import Util from "./util.js";
+import { performance } from "megajs2/src/browser-context";
+import Util from "megajs2/src/util";
 
 export class Semaphore {
     /**
@@ -222,4 +222,4 @@ export class CountUpAndDownLatch extends CountDownLatch {
     }
 }
 
-export default {Semaphore, CountDownLatch, CountUpAndDownLatch};
+export default { Semaphore, CountDownLatch, CountUpAndDownLatch };

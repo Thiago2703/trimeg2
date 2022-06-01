@@ -1,4 +1,4 @@
-import {Semaphore} from "../../src/synchronization.js";
+import { Semaphore } from "megajs2/src/synchronization";
 
 
 async function example() {

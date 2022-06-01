@@ -1,4 +1,4 @@
-import {atob, btoa, MessageChannel} from "./browser-context.js";
+import { atob, btoa, MessageChannel } from "megajs2/src/browser-context";
 
 export default class Util {
 
@@ -270,7 +270,7 @@ export default class Util {
      * @return {Promise<*>}
      */
     static async repeatIfErrorAsync(executable, count = 5, delay = 5000) { //todo make `delay` iterable
-        for (let i = 0;; i++) {
+        for (let i = 0; ; i++) {
             try {
                 if (i) {
                     console.log("REPEAT");
@@ -385,7 +385,7 @@ export default class Util {
     static async * iterateReadableStream(stream) {
         const reader = stream.getReader();
         while (true) {
-            const {done, value} = await reader.read();
+            const { done, value } = await reader.read();
             if (done) {
                 break;
             }
@@ -399,11 +399,11 @@ export default class Util {
      * but the realization for Node requires to use them so let's just use `globalThis.setImmediate`.
      */
     static setImmediate = globalThis.setImmediate ||
-        /*#__PURE__*/ (function() {
-            const {port1, port2} = new MessageChannel();
+        /*#__PURE__*/ (function () {
+            const { port1, port2 } = new MessageChannel();
             const queue = [];
 
-            port1.onmessage = function() {
+            port1.onmessage = function () {
                 const callback = queue.shift();
                 callback();
                 // if (!queue.length) {
@@ -412,7 +412,7 @@ export default class Util {
             };
             // port1.unref();
 
-            return function(callback) {
+            return function (callback) {
                 // port1.ref();
                 port2.postMessage(null);
                 queue.push(callback);
@@ -424,8 +424,8 @@ export default class Util {
     // https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm
     static structuredClone(object) {
         return new Promise(resolve => {
-            const {port1, port2} = new MessageChannel();
-            port1.onmessage = function(message) {
+            const { port1, port2 } = new MessageChannel();
+            port1.onmessage = function (message) {
                 resolve(message.data);
             };
             port2.postMessage(object);

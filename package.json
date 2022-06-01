@@ -1,5 +1,5 @@
 {
-  "name": "meganz-api",
+  "name": "megajs2",
   "version": "0.2.0",
   "description": "Convenient Mega.nz API. Only some of methods are implemented.",
   "type": "module",
